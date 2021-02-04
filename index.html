@@ -10,13 +10,101 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/eb42c3a17f.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="src/styles.css" />
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
-      <h1>Hello World</h1>
-      <button class="btn btn-primary">click Here</button>
+      <div class="weather-app border">
+        <!--List of cities -->
+        <div class="row">
+          <div class="col">
+            <ul class="cities">
+              <li>Jakarta</li>
+              <li>London</li>
+              <li>Paris</li>
+              <li>New York</li>
+              <li>San Francisco</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Search Form -->
+        <div class="row">
+          <div class="col">
+            <form>
+              <input type="search" class="form-control" />
+              <input
+                type="submit"
+                value="Searh"
+                class="btn btn-secondary shadow-sm"
+              />
+              <i class="fas fa-map-marker-alt"></i>
+            </form>
+          </div>
+        </div>
+
+        <!-- Main body -->
+        <div class="row">
+          <div class="col">
+            <h1>Jakarta</h1>
+            <ul class="datetime">
+              <li>Sunday</li>
+              <li>25/06/2021</li>
+              <li>09:00 PM</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <span> <bold> 26</bold> °C | °F</span>
+                <img src="images/Sun_Two Color.png" width="100px" alt="Sunny" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <ul class="weather">
+                  <li>Broken Clouds</li>
+                  <li>Cloudines: 75%</li>
+                  <li>Wind: 3km/h</li>
+                  <li>Humidity: 94%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- weather prediction-->
+        <div class="row">
+          <div class="col">Sun | Mon | Tue | Wed | Thu | Fri | Sat</div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+        <small>
+          <i class="fas fa-mobile-alt"></i> Responsive Design
+          <a
+            href="https://github.com/irSilviana/Vanilla-Weather-App"
+            target="_blank"
+            >Open-source Code</a
+          >
+          <br />
+          Created by
+          <a href="https://www.linkedin.com/in/irsilviana/" target="_blank"
+            >IrSilviana</a
+          >
+          from
+          <a
+            href="https://www.shecodes.io/students/259-irfani-silviana"
+            target="_blank"
+            >SheCodes</a
+          >
+        </small>
+      </footer>
     </div>
     <script src="src/app.js"></script>
   </body>
