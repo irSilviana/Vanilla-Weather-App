@@ -19,92 +19,168 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app border">
-        <!--List of cities -->
-        <div class="row">
-          <div class="col">
-            <ul class="cities">
-              <li>Jakarta</li>
-              <li>London</li>
-              <li>Paris</li>
-              <li>New York</li>
-              <li>San Francisco</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Search Form -->
-        <div class="row">
-          <div class="col">
-            <form>
-              <input type="search" class="form-control" />
-              <input
-                type="submit"
-                value="Searh"
-                class="btn btn-secondary shadow-sm"
-              />
-              <i class="fas fa-map-marker-alt"></i>
-            </form>
-          </div>
-        </div>
-
-        <!-- Main body -->
-        <div class="row">
-          <div class="col">
-            <h1>Jakarta</h1>
-            <ul class="datetime">
-              <li>Sunday</li>
-              <li>25/06/2021</li>
-              <li>09:00 PM</li>
-            </ul>
-          </div>
-          <div class="col">
-            <div class="row">
-              <div class="col">
-                <span> <bold> 26</bold> °C | °F</span>
-                <img src="images/Sun_Two Color.png" width="100px" alt="Sunny" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <ul class="weather">
-                  <li>Broken Clouds</li>
-                  <li>Cloudines: 75%</li>
-                  <li>Wind: 3km/h</li>
-                  <li>Humidity: 94%</li>
-                </ul>
+      <div class="weather-page">
+        <div class="weather-app">
+          <!--List of cities -->
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <ul class="cities">
+                    <li>Jakarta</li>
+                    |
+                    <li>London</li>
+                    |
+                    <li>Paris</li>
+                    |
+                    <li>New York</li>
+                    |
+                    <li>San Francisco</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- weather prediction-->
-        <div class="row">
-          <div class="col">Sun | Mon | Tue | Wed | Thu | Fri | Sat</div>
+          <!-- Search Form -->
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <input
+                      type="search"
+                      class="form-control shadow-sm"
+                      placeholder="Enter a city"
+                      autofocus="on"
+                      autocomplete="off"
+                    />
+
+                    <i class="fas fa-map-marker-alt"></i>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main body -->
+          <div class="row">
+            <!-- Left side -->
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <h1>Jakarta</h1>
+                  <ul class="datetime">
+                    <li>Sunday</li>
+                    <li>25/06/2021</li>
+                    <li>09:00 PM</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Right side -->
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <!-- upper part-->
+                  <div class="row">
+                    <div class="col temperature-section">
+                      <div class="clearfix">
+                        <img
+                          src="https://ssl.gstatic.com/onebox/weather/64/fog.png"
+                          alt="Sunny"
+                          class="float-left"
+                        />
+                        <div class="temperature">
+                          <span>26</span>
+                          <span class="units">°C | <a href="#">°F</a></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--lower part-->
+                  <div class="row">
+                    <div class="col">
+                      <p class="description">Broken Clouds</p>
+                      <ul class="weather">
+                        <li>Cloudines: 75%</li>
+                        <li>Wind: 3km/h</li>
+                        <li>Humidity: 94%</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- weather prediction-->
+          <div class="row week-prediction">
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      Mon
+                      <br />
+                      ☁<br />
+                      <span class="prediction"> 28°/22°</span>
+                    </div>
+                    <div class="col">
+                      Tue<br />
+                      ☀
+                      <br />
+                      <span class="prediction"> 28°/22°</span>
+                    </div>
+                    <div class="col">
+                      Wed<br />
+                      🌨<br />
+                      <span class="prediction"> 28°/22°</span>
+                    </div>
+                    <div class="col">
+                      Thu<br />
+                      🌩<br />
+                      <span class="prediction"> 28°/22°</span>
+                    </div>
+                    <div class="col">
+                      Fri<br />
+                      🌨<br />
+                      <span class="prediction"> 28°/22°</span>
+                    </div>
+                    <div class="col">
+                      Sat<br />
+                      ☁<br />
+                      <span class="prediction"> 28°/22°</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- Footer -->
+        <footer>
+          <small>
+            <i class="fas fa-mobile-alt"></i> Responsive Design
+            <a
+              href="https://github.com/irSilviana/Vanilla-Weather-App"
+              target="_blank"
+              >Open-source Code</a
+            >
+            <br />
+            Created by
+            <a href="https://www.linkedin.com/in/irsilviana/" target="_blank"
+              >IrSilviana</a
+            >
+            from
+            <a
+              href="https://www.shecodes.io/students/259-irfani-silviana"
+              target="_blank"
+              >SheCodes</a
+            >
+          </small>
+        </footer>
       </div>
-      <!-- Footer -->
-      <footer>
-        <small>
-          <i class="fas fa-mobile-alt"></i> Responsive Design
-          <a
-            href="https://github.com/irSilviana/Vanilla-Weather-App"
-            target="_blank"
-            >Open-source Code</a
-          >
-          <br />
-          Created by
-          <a href="https://www.linkedin.com/in/irsilviana/" target="_blank"
-            >IrSilviana</a
-          >
-          from
-          <a
-            href="https://www.shecodes.io/students/259-irfani-silviana"
-            target="_blank"
-            >SheCodes</a
-          >
-        </small>
-      </footer>
     </div>
     <script src="src/app.js"></script>
   </body>
