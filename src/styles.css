@@ -19,6 +19,7 @@ a:hover {
 ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 li {
@@ -42,6 +43,15 @@ ul.cities li:hover {
   text-decoration: underline;
 }
 
+li#last-update {
+  font-size: 13px;
+}
+li#day {
+  font-size: 20px;
+  line-height: 1;
+  margin-top: 5px;
+}
+
 p#description {
   color: #434752;
   font-size: 13px;
@@ -49,6 +59,7 @@ p#description {
   margin: 0;
   text-transform: capitalize;
 }
+
 ul.weather {
   color: #434752;
   font-size: 13px;
@@ -98,13 +109,12 @@ footer {
 
 #clock {
   margin: 0;
-  font-size: 30px;
-  line-height: 1;
+  font-size: 32px;
 }
 
 #amPm {
   position: relative;
-  top: -8px;
+  top: -10px;
 }
 
 .temperature-section img {
