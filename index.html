@@ -69,7 +69,7 @@
             <div class="col">
               <div class="card">
                 <div class="card-body">
-                  <h1>Jakarta</h1>
+                  <h1 id="city"></h1>
                   <ul class="datetime">
                     <li>Sunday</li>
                     <li>25/06/2021</li>
@@ -93,8 +93,8 @@
                           alt="Sunny"
                           class="float-left"
                         />
-                        <div class="temperature">
-                          <span>26</span>
+                        <div class="temperature-part">
+                          <span id="temperature"></span>
                           <span class="units">°C | <a href="#">°F</a></span>
                         </div>
                       </div>
@@ -103,11 +103,12 @@
                   <!--lower part-->
                   <div class="row">
                     <div class="col">
-                      <p class="description">Broken Clouds</p>
+                      <p id="description">Broken Clouds</p>
                       <ul class="weather">
-                        <li>Cloudines: 75%</li>
-                        <li>Wind: 3km/h</li>
-                        <li>Humidity: 94%</li>
+                        <li>Cloudines: <span id="cloudines"></span>%</li>
+                        <li>Feels like: <span id="feels-like"></span>°</li>
+                        <li>Humidity: <span id="humidity"></span>%</li>
+                        <li>Wind: <span id="wind"></span>km/h</li>
                       </ul>
                     </div>
                   </div>
