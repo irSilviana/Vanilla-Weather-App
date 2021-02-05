@@ -6,6 +6,7 @@ body {
 
 h1 {
   color: #333f6e;
+  font-size: 36px;
 }
 
 a {
@@ -23,14 +24,22 @@ ul {
 li {
   color: #636875;
 }
+ul.cities {
+  color: #3858a8;
+  font-size: 13px;
+  cursor: pointer;
+}
 
 ul.cities li {
   color: #3858a8;
-  display: inline;
-  font-size: 13px;
   text-decoration: none;
+  display: inline;
   text-align: left;
-  cursor: pointer;
+}
+
+ul.cities li:hover {
+  color: #192c5c;
+  text-decoration: underline;
 }
 
 p.description {
@@ -43,6 +52,7 @@ ul.weather {
   color: #434752;
   font-size: 13px;
   position: relative;
+  margin-bottom: 0pc;
 }
 
 ul.weather li {
@@ -71,7 +81,7 @@ footer {
 }
 .form-control {
   display: inline;
-  width: 125px;
+  width: 150px;
   margin-bottom: 5px;
 }
 
@@ -82,6 +92,17 @@ footer {
   top: 3px;
   position: relative;
   cursor: pointer;
+}
+
+#clock {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1;
+}
+
+#amPm {
+  position: relative;
+  top: -8px;
 }
 
 .temperature-section img {
