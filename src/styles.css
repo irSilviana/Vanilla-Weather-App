@@ -118,8 +118,9 @@ footer {
 }
 
 .temperature-section img {
-  width: 90px;
+  width: 85px;
   float: left;
+  margin-left: -5px;
 }
 
 .temperature-section .temperature-part {
@@ -128,8 +129,9 @@ footer {
 
 .temperature-part span {
   color: #333f6e;
-  font-size: 2.7rem;
+  font-size: 40px;
   font-weight: 400;
+  float: left;
   margin: 0;
   line-height: 2;
 }
@@ -137,7 +139,8 @@ footer {
 .temperature-part .units {
   position: relative;
   font-size: 16px;
-  top: -20px;
+  top: 15px;
+  left: 5px;
 }
 
 .week-prediction {

@@ -45,6 +45,7 @@ function showTemperature(response) {
     let wind = Math.round(response.data.wind.speed);
     let humidity = Math.round(response.data.main.humidity);
     let feelsLike = Math.round(response.data.main.feels_like);
+    let icon = response.data.weather[0].icon;
     showTime(new Date(response.data.dt * 1000));
 
     document.querySelector("#temperature").innerHTML = temp;
@@ -54,6 +55,8 @@ function showTemperature(response) {
     document.querySelector("#wind").innerHTML = wind;
     document.querySelector("#humidity").innerHTML = humidity;
     document.querySelector("#feels-like").innerHTML = feelsLike;
+  document.querySelector("#icon").setAttribute("src", `images/${icon}@2x.png`);
+  document.querySelector("#icon").setAttribute("alt", description);
 }
 
 
