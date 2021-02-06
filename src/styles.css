@@ -85,12 +85,18 @@ footer {
   margin: 0 auto;
 }
 .weather-app {
+  background: #ffffff;
   border: 1px solid #dee2e6 !important;
   border-radius: 4px;
   display: block;
   margin-top: 20px;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+}
+
+.card {
+  border: 0;
+  background: transparent;
 }
 .form-control {
   display: inline;

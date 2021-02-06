@@ -59,11 +59,22 @@ function showTemperature(response) {
   document.querySelector("#icon").setAttribute("alt", description);
 }
 
+function searchCity(city) {
+  let unit = "metric";
+  let apiKey = "125089b53f00feddd6fbd602dc6cec7a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  
+  axios.get(apiUrl).then(showTemperature);
+}
 
-let city = "New York";
-let unit = "metric";
-let apiKey = "125089b53f00feddd6fbd602dc6cec7a";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+//default
+searchCity("Jakarta");
 
+function handleClick(event) {
+  event.preventDefault();
+  let city = document.querySelector("#input-city").value;
 
-axios.get(apiUrl).then(showTemperature);
+  searchCity(city);
+}
+
+document.querySelector("#search-form").addEventListener("submit", handleClick);
