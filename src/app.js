@@ -37,6 +37,7 @@ function showTime(datetime) {
 }
 
 let celcius = null;
+let celciousFeelsLike = null;
 function showTemperature(response) {  
     let city = response.data.name;
     let country = response.data.sys.country;
@@ -50,14 +51,14 @@ function showTemperature(response) {
     showTime(new Date(response.data.dt * 1000));
   
   celcius = temp;
- 
+  celciousFeelsLike = feelsLike;
     document.querySelector("#temperature").innerHTML = celcius;
     document.querySelector("#city").innerHTML = `${city}, ${country}`;
     document.querySelector("#description").innerHTML = description;
     document.querySelector("#cloudines").innerHTML = cloudines;
     document.querySelector("#wind").innerHTML = wind;
     document.querySelector("#humidity").innerHTML = humidity;
-    document.querySelector("#feels-like").innerHTML = feelsLike;
+    document.querySelector("#feels-like").innerHTML = celciousFeelsLike;
     document.querySelector("#icon").setAttribute("src", `images/${icon}@2x.png`);
     document.querySelector("#icon").setAttribute("alt", description);
     
@@ -102,7 +103,9 @@ document.querySelector("#search-form").addEventListener("submit", handleClick);
 function convertToFahrenheit(event) {
   event.preventDefault();
   let fahrenheit = Math.round(celcius * 9 / 5) + 32;
+  let fahrenheitFeelsLike = Math.round(celciousFeelsLike * 9 / 5) + 32;
   document.querySelector("#temperature").innerHTML = fahrenheit; 
+  document.querySelector("#feels-like").innerHTML = fahrenheitFeelsLike ;
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 }
@@ -111,7 +114,8 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit)
 
 function convertToCelcius(event) {
   event.preventDefault();
-  document.querySelector("#temperature").innerHTML = celcius; 
+  document.querySelector("#temperature").innerHTML = celcius;
+  document.querySelector("#feels-like").innerHTML = celciousFeelsLike ;
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.add("active");
 }
