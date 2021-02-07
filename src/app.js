@@ -103,5 +103,18 @@ function convertToCelcius(event) {
 let celciusLink = document.querySelector("#toCelcius")
 celciusLink.addEventListener("click", convertToCelcius);
 
+function searchCities(event) { 
+  event.preventDefault();
+  let targetCity = event.target.innerHTML;
+ 
+  searchCity(targetCity); 
+}
+
+document.querySelector("#jakarta").addEventListener("click", searchCities);
+document.querySelector("#london").addEventListener("click", searchCities);
+document.querySelector("#paris").addEventListener("click", searchCities);
+document.querySelector("#newyork").addEventListener("click", searchCities);
+document.querySelector("#sanfrancisco").addEventListener("click", searchCities);
+
 //default
 searchCity("Jakarta");
