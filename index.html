@@ -27,16 +27,16 @@
             <div class="col">
               <div class="card">
                 <div class="card-body">
-                  <ul class="cities">
-                    <li>Jakarta</li>
+                  <ul class="cities" id="cities-link">
+                    <li id="jakarta">Jakarta</li>
                     |
-                    <li>London</li>
+                    <li id="london">London</li>
                     |
-                    <li>Paris</li>
+                    <li id="paris">Paris</li>
                     |
-                    <li>New York</li>
+                    <li id="newYork">New York</li>
                     |
-                    <li>San Francisco</li>
+                    <li id="sanFrancisco">San Francisco</li>
                   </ul>
                 </div>
               </div>
@@ -91,7 +91,10 @@
                         <img src="" alt="" id="icon" class="float-left" />
                         <div class="temperature-part">
                           <span id="temperature"></span>
-                          <span class="units">°C | <a href="#">°F</a></span>
+                          <span class="units"
+                            ><a href="#" id="toCelcius" class="active">°C</a> |
+                            <a href="#" id="toFahrenheit">°F</a></span
+                          >
                         </div>
                       </div>
                     </div>

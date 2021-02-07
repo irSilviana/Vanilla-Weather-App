@@ -47,16 +47,21 @@ function showTemperature(response) {
     let feelsLike = Math.round(response.data.main.feels_like);
     let icon = response.data.weather[0].icon;
     showTime(new Date(response.data.dt * 1000));
-
-    document.querySelector("#temperature").innerHTML = temp;
+  
+  celcius = temp;
+ 
+    document.querySelector("#temperature").innerHTML = celcius;
     document.querySelector("#city").innerHTML = `${city}, ${country}`;
     document.querySelector("#description").innerHTML = description;
     document.querySelector("#cloudines").innerHTML = cloudines;
     document.querySelector("#wind").innerHTML = wind;
     document.querySelector("#humidity").innerHTML = humidity;
     document.querySelector("#feels-like").innerHTML = feelsLike;
-  document.querySelector("#icon").setAttribute("src", `images/${icon}@2x.png`);
-  document.querySelector("#icon").setAttribute("alt", description);
+    document.querySelector("#icon").setAttribute("src", `images/${icon}@2x.png`);
+    document.querySelector("#icon").setAttribute("alt", description);
+    
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
 }
 
 function searchCity(city) {
@@ -67,14 +72,36 @@ function searchCity(city) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-//default
-searchCity("Jakarta");
-
 function handleClick(event) {
   event.preventDefault();
   let city = document.querySelector("#input-city").value;
 
   searchCity(city);
 }
-
 document.querySelector("#search-form").addEventListener("submit", handleClick);
+
+let celcius = null;
+
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheit = Math.round(celcius * 9 / 5) + 32;
+  document.querySelector("#temperature").innerHTML = fahrenheit; 
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+}
+
+let fahrenheitLink = document.querySelector("#toFahrenheit")
+fahrenheitLink.addEventListener("click", convertToFahrenheit)
+
+function convertToCelcius(event) {
+  event.preventDefault();
+  document.querySelector("#temperature").innerHTML = celcius; 
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
+}
+
+let celciusLink = document.querySelector("#toCelcius")
+celciusLink.addEventListener("click", convertToCelcius);
+
+//default
+searchCity("Jakarta");
