@@ -36,6 +36,7 @@ function showTime(datetime) {
 
 }
 
+let celcius = null;
 function showTemperature(response) {  
     let city = response.data.name;
     let country = response.data.sys.country;
@@ -67,10 +68,28 @@ function showTemperature(response) {
 function searchCity(city) {
   let unit = "metric";
   let apiKey = "125089b53f00feddd6fbd602dc6cec7a";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  let targetUrl = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiUrl = `${targetUrl}q=${city}&units=${unit}&appid=${apiKey}`;
   
   axios.get(apiUrl).then(showTemperature);
 }
+
+function showPosition(position) { 
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let unit = "metric";
+  let apiKey = "125089b53f00feddd6fbd602dc6cec7a";
+  let targetUrl = "https://api.openweathermap.org/data/2.5/weather?"; 
+  let apiUrl = `${targetUrl}lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
+  
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function searchCurrentLocation() { 
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+document.querySelector("#currentLocation").addEventListener("click", searchCurrentLocation);
+
 
 function handleClick(event) {
   event.preventDefault();
@@ -80,8 +99,6 @@ function handleClick(event) {
 }
 document.querySelector("#search-form").addEventListener("submit", handleClick);
 
-let celcius = null;
-
 function convertToFahrenheit(event) {
   event.preventDefault();
   let fahrenheit = Math.round(celcius * 9 / 5) + 32;
@@ -89,7 +106,6 @@ function convertToFahrenheit(event) {
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 }
-
 let fahrenheitLink = document.querySelector("#toFahrenheit")
 fahrenheitLink.addEventListener("click", convertToFahrenheit)
 
@@ -99,7 +115,6 @@ function convertToCelcius(event) {
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.add("active");
 }
-
 let celciusLink = document.querySelector("#toCelcius")
 celciusLink.addEventListener("click", convertToCelcius);
 
@@ -109,7 +124,6 @@ function searchCities(event) {
  
   searchCity(targetCity); 
 }
-
 document.querySelector("#jakarta").addEventListener("click", searchCities);
 document.querySelector("#london").addEventListener("click", searchCities);
 document.querySelector("#paris").addEventListener("click", searchCities);
