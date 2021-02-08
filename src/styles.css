@@ -2,6 +2,9 @@ body {
   font-family: "Segoe UI", "Helvetica Neue", Arial, "Noto Sans",
     "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background image color: #d42c7f; */
 }
 
 h1 {
@@ -34,7 +37,7 @@ ul {
 }
 
 li {
-  color: #636875;
+  color: #57595f;
 }
 ul.cities {
   color: #3858a8;
@@ -99,13 +102,13 @@ footer {
 
 .weather-page {
   max-width: 500px;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 .weather-app {
-  background: #ffffff;
-  border: 1px solid #dee2e6 !important;
+  background: #faecf3d9;
+  border: 1px solid #ececec !important;
   border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+  box-shadow: rgb(0 0 0 / 15%) 0px 8px 16px 0px;
   display: block;
   margin-top: 20px;
   padding: 10px;

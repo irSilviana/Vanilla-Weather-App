@@ -103,6 +103,7 @@ function showTemperature(response) {
   document.querySelector("#feels-like").innerHTML = Math.round(feelsLike);
   document.querySelector("#icon").setAttribute("src", `images/${icon}@2x.png`);
   document.querySelector("#icon").setAttribute("alt", description);
+  document.body.style.backgroundImage = `url(images/background/${icon}@2x.png)`;
 }
 
 // 5-days weather forecast with minimum & maximum temperature from each day
