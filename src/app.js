@@ -70,7 +70,6 @@ function showTemperature(response) {
     document.querySelector("#icon").setAttribute("alt", description); 
 }
 
-
 // 5-days weather forecast with minimum & maximum temperature from each day
 function getForecast(forecast) { 
   let tempMax5days = [];
@@ -90,7 +89,8 @@ function getForecast(forecast) {
     //console.log(tempMax5days);
     tempMax = tempMaxDay[j];
   }
-  console.log(tempMax5days);
+  //console.log(tempMax5days);
+  
   let tempMin5days = [];
   let tempMinDay = [];
   let tempMin = [];
@@ -108,9 +108,9 @@ function getForecast(forecast) {
     //console.log(tempMin5days);
     tempMin = tempMinDay[j];
   }
-  console.log(tempMin5days);
+ // console.log(tempMin5days);
   
-    // to be continue with displayForecast
+  // to be continue with displayForecast
 
 }
 
