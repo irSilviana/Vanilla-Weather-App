@@ -40,6 +40,7 @@ let celcius = null;
 let celciousFeelsLike = null;
 let fahrenheit = null;
 let fahrenheitFeelsLike = null;
+let unit = null;
 
 function showTemperature(response) {  
     let city = response.data.name;
@@ -69,8 +70,8 @@ function showTemperature(response) {
     document.querySelector("#icon").setAttribute("alt", description); 
 }
 
+
 function searchCity(city) {
-  let unit = null;
     if (celciusLink.classList.value === "active" ) {
     unit = "metric";
     celciusLink.classList.add("active");
@@ -89,9 +90,19 @@ function searchCity(city) {
 }
 
 function showPosition(position) { 
+  
+    if (celciusLink.classList.value === "active" ) {
+    unit = "metric";
+    celciusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+     } else {
+    unit = "imperial";
+    celciusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+  }
+
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let unit = "metric";
   let apiKey = "125089b53f00feddd6fbd602dc6cec7a";
   let targetUrl = "https://api.openweathermap.org/data/2.5/weather?"; 
   let apiUrl = `${targetUrl}lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
