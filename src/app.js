@@ -258,6 +258,11 @@ function showPosition(position) {
   let apiUrl = `${targetUrl}lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
 
   axios.get(apiUrl).then(showTemperature);
+
+  targetUrl = "https://api.openweathermap.org/data/2.5/forecast?";
+  apiUrl = `${targetUrl}lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(getForecast);
 }
 
 function searchCurrentLocation() {
