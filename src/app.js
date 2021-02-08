@@ -38,36 +38,49 @@ function showTime(datetime) {
 
 let celcius = null;
 let celciousFeelsLike = null;
+let fahrenheit = null;
+let fahrenheitFeelsLike = null;
+
 function showTemperature(response) {  
     let city = response.data.name;
     let country = response.data.sys.country;
-    let temp = Math.round(response.data.main.temp);
+    let temp = response.data.main.temp;
     let description = response.data.weather[0].description;
     let cloudines = Math.round(response.data.clouds.all);
     let wind = Math.round(response.data.wind.speed);
     let humidity = Math.round(response.data.main.humidity);
-    let feelsLike = Math.round(response.data.main.feels_like);
+    let feelsLike = response.data.main.feels_like;
     let icon = response.data.weather[0].icon;
     showTime(new Date(response.data.dt * 1000));
   
   celcius = temp;
   celciousFeelsLike = feelsLike;
-    document.querySelector("#temperature").innerHTML = celcius;
+  fahrenheit = temp;
+  fahrenheitFeelsLike = feelsLike;
+
+    document.querySelector("#temperature").innerHTML = Math.round(temp);
     document.querySelector("#city").innerHTML = `${city}, ${country}`;
     document.querySelector("#description").innerHTML = description;
     document.querySelector("#cloudines").innerHTML = cloudines;
     document.querySelector("#wind").innerHTML = wind;
     document.querySelector("#humidity").innerHTML = humidity;
-    document.querySelector("#feels-like").innerHTML = celciousFeelsLike;
+    document.querySelector("#feels-like").innerHTML = Math.round(feelsLike);
     document.querySelector("#icon").setAttribute("src", `images/${icon}@2x.png`);
-    document.querySelector("#icon").setAttribute("alt", description);
-    
-  fahrenheitLink.classList.remove("active");
-  celciusLink.classList.add("active");
+    document.querySelector("#icon").setAttribute("alt", description); 
 }
 
 function searchCity(city) {
-  let unit = "metric";
+  let unit = null;
+    if (celciusLink.classList.value === "active" ) {
+    unit = "metric";
+    celciusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+     } else {
+    unit = "imperial";
+    celciusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+  }
+      
   let apiKey = "125089b53f00feddd6fbd602dc6cec7a";
   let targetUrl = "https://api.openweathermap.org/data/2.5/weather?";
   let apiUrl = `${targetUrl}q=${city}&units=${unit}&appid=${apiKey}`;
@@ -100,12 +113,14 @@ function handleClick(event) {
 }
 document.querySelector("#search-form").addEventListener("submit", handleClick);
 
+
+
 function convertToFahrenheit(event) {
   event.preventDefault();
-  let fahrenheit = Math.round(celcius * 9 / 5) + 32;
-  let fahrenheitFeelsLike = Math.round(celciousFeelsLike * 9 / 5) + 32;
-  document.querySelector("#temperature").innerHTML = fahrenheit; 
-  document.querySelector("#feels-like").innerHTML = fahrenheitFeelsLike ;
+  fahrenheit = (celcius * 9 / 5) + 32;
+  fahrenheitFeelsLike = (celciousFeelsLike * 9 / 5) + 32;
+  document.querySelector("#temperature").innerHTML = Math.round(fahrenheit); 
+  document.querySelector("#feels-like").innerHTML = Math.round(fahrenheitFeelsLike);
   celciusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 }
@@ -114,8 +129,10 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit)
 
 function convertToCelcius(event) {
   event.preventDefault();
-  document.querySelector("#temperature").innerHTML = celcius;
-  document.querySelector("#feels-like").innerHTML = celciousFeelsLike ;
+  celcius = (fahrenheit - 32) * 5 / 9;
+  celciousFeelsLike = (fahrenheitFeelsLike - 32) * 5 / 9;
+  document.querySelector("#temperature").innerHTML = Math.round(celcius);
+  document.querySelector("#feels-like").innerHTML = Math.round(celciousFeelsLike) ;
   fahrenheitLink.classList.remove("active");
   celciusLink.classList.add("active");
 }
