@@ -24,14 +24,16 @@ function showTime(datetime) {
     document.querySelector("#amPm").innerHTML = amPm;
 
     function convertHour() {
-    if (hour <= 9) {
-      hour = `0${hour}`;
-    } else if (hour > 9 && hour <= 12) {
-      return hour;
-    } else {
-      hour = hour - 12;
-      hour = `0${hour}`;
-    }
+      if (hour <= 9) {
+        hour = `0${hour}`;
+      } else if (hour > 9 && hour <= 12) {
+        return hour;
+      } else if (hour > 12 && hour <= 21) {
+        hour = hour - 12;
+        hour = `0${hour}`;
+      } else { 
+        hour = hour - 12;
+      }
   }
 
 }
@@ -72,12 +74,15 @@ function showTemperature(response) {
 
 // 5-days weather forecast with minimum & maximum temperature from each day
 function getForecast(forecast) { 
+  let array = forecast.data.list;
+ 
+  //Maximum Temperature within 5-days
   let tempMax5days = [];
   let tempMaxDay = [];
   let tempMax = [];
   
-  for (let i = 0; i < 40; i++) {
-    tempMax.push(forecast.data.list[i].main.temp_max);
+  for (let i = 0; i < array.length; i++) {
+    tempMax.push(array[i].main.temp_max);
   }
   
   for (let j = 0; j < 5; j++) {
@@ -89,14 +94,16 @@ function getForecast(forecast) {
     //console.log(tempMax5days);
     tempMax = tempMaxDay[j];
   }
-  //console.log(tempMax5days);
+  console.log(`Maximum temperature in 5-days: ${tempMax5days}`);
   
+
+   //Minimum Temperature within 5-days
   let tempMin5days = [];
   let tempMinDay = [];
   let tempMin = [];
   
-  for (let i = 0; i < 40; i++) {
-    tempMin.push(forecast.data.list[i].main.temp_min);
+  for (let i = 0; i < array.length; i++) {
+    tempMin.push(array[i].main.temp_min);
   }
   
   for (let j = 0; j < 5; j++) {
@@ -108,9 +115,43 @@ function getForecast(forecast) {
     //console.log(tempMin5days);
     tempMin = tempMinDay[j];
   }
- // console.log(tempMin5days);
+  console.log(`Minimum temparature in 5-days: ${tempMin5days}`);
   
-  // to be continue with displayForecast
+
+  //name of the day for the next 5-days
+  let time5days = [];
+  let timeEveryDay = [];
+  let timeEvery3hour = [];
+  
+  for (let k = 0; k < array.length; k++) {
+  timeEvery3hour.push(array[k].dt);
+  }
+  //console.log(timeEvery3hour);
+
+  for (let l = 0; l < 5; l++) {
+    timeEveryDay[l] = timeEvery3hour.splice(8);
+    time5days.push(Math.max(...timeEvery3hour));
+    timeEvery3hour = timeEveryDay[l];
+  }
+  //console.log(time5days);
+
+  let newTime5days = [];
+  for (let m = 0; m < 5; m++) {
+    newTime5days.push(formatDay(time5days[m] * 1000));
+  }
+
+  console.log (newTime5days);
+
+    
+  function formatDay(timestamp) { 
+      let now = new Date(timestamp);
+      
+      let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+      let day = days[now.getDay()];
+      
+      return day;  
+    }
+
 
 }
 
