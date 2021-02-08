@@ -94,7 +94,7 @@ function getForecast(forecast) {
     //console.log(tempMax5days);
     tempMax = tempMaxDay[j];
   }
-  console.log(`Maximum temperature in 5-days: ${tempMax5days}`);
+  //console.log(`Maximum temperature in 5-days: ${tempMax5days}`);
   
 
    //Minimum Temperature within 5-days
@@ -115,7 +115,7 @@ function getForecast(forecast) {
     //console.log(tempMin5days);
     tempMin = tempMinDay[j];
   }
-  console.log(`Minimum temparature in 5-days: ${tempMin5days}`);
+ // console.log(`Minimum temparature in 5-days: ${tempMin5days}`);
   
 
   //name of the day for the next 5-days
@@ -140,7 +140,7 @@ function getForecast(forecast) {
     newTime5days.push(formatDay(time5days[m] * 1000));
   }
 
-  console.log (newTime5days);
+ //console.log (newTime5days);
 
     
   function formatDay(timestamp) { 
