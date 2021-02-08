@@ -83,6 +83,12 @@ ul.weather li {
   padding-right: 10px;
 }
 
+img.forecast {
+  display: block;
+  margin: -10px auto;
+  width: 70px;
+}
+
 footer {
   color: #828794;
   font-size: 12px;
