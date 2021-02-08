@@ -71,6 +71,49 @@ function showTemperature(response) {
 }
 
 
+// 5-days weather forecast with minimum & maximum temperature from each day
+function getForecast(forecast) { 
+  let tempMax5days = [];
+  let tempMaxDay = [];
+  let tempMax = [];
+  
+  for (let i = 0; i < 40; i++) {
+    tempMax.push(forecast.data.list[i].main.temp_max);
+  }
+  
+  for (let j = 0; j < 5; j++) {
+    //console.log(tempMax);
+    tempMaxDay[j] = tempMax.splice(8);
+    //console.log(tempMaxDay[j]);
+    //console.log(tempMax);
+    tempMax5days.push(Math.round(Math.max(...tempMax)));
+    //console.log(tempMax5days);
+    tempMax = tempMaxDay[j];
+  }
+  console.log(tempMax5days);
+  let tempMin5days = [];
+  let tempMinDay = [];
+  let tempMin = [];
+  
+  for (let i = 0; i < 40; i++) {
+    tempMin.push(forecast.data.list[i].main.temp_min);
+  }
+  
+  for (let j = 0; j < 5; j++) {
+    //console.log(tempMin);
+    tempMinDay[j] = tempMin.splice(8);
+    //console.log(tempMinDay[j]);
+    //console.log(tempMin);
+    tempMin5days.push(Math.round(Math.min(...tempMin)));
+    //console.log(tempMin5days);
+    tempMin = tempMinDay[j];
+  }
+  console.log(tempMin5days);
+  
+    // to be continue with displayForecast
+
+}
+
 function searchCity(city) {
     if (celciusLink.classList.value === "active" ) {
     unit = "metric";
@@ -87,6 +130,11 @@ function searchCity(city) {
   let apiUrl = `${targetUrl}q=${city}&units=${unit}&appid=${apiKey}`;
   
   axios.get(apiUrl).then(showTemperature);
+
+  targetUrl = "https://api.openweathermap.org/data/2.5/forecast?";
+  apiUrl = `${targetUrl}q=${city}&units=${unit}&appid=${apiKey}`;
+  
+  axios.get(apiUrl).then(getForecast);
 }
 
 function showPosition(position) { 
@@ -115,7 +163,6 @@ function searchCurrentLocation() {
 }
 document.querySelector("#currentLocation").addEventListener("click", searchCurrentLocation);
 
-
 function handleClick(event) {
   event.preventDefault();
   let city = document.querySelector("#input-city").value;
@@ -123,8 +170,6 @@ function handleClick(event) {
   searchCity(city);
 }
 document.querySelector("#search-form").addEventListener("submit", handleClick);
-
-
 
 function convertToFahrenheit(event) {
   event.preventDefault();
