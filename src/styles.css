@@ -133,6 +133,11 @@ footer {
   transition: all 200ms ease-in-out;
 }
 
+.btn-secondary {
+  margin-top: -5px;
+  padding: 5px 10px;
+}
+
 #clock {
   margin: 0;
   font-size: 32px;
